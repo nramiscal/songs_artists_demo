@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+  table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+  }
+  td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+  }
+  tr:nth-child(even) {
+      background-color: #dddddd;
+  }
+</style>
+        <meta charset="utf-8">
+        <title>Index</title>
+    </head>
+    <body>
+        <form class="" action="/songs/new" method="post">
+            <input type="text" name="name" placeholder="Name"><br>
+            <input type="number" name="popularity" placeholder="Popularity"><br>
+            <input type="submit" name="" value="Create Song"><br>
+        </form>
+        <br>
+        <form class="" action="/artists/new" method="post">
+            <input type="text" name="name" placeholder="Name"><br>
+            <input type="text" name="genre" placeholder="Genre"><br>
+            <input type="submit" name="" value="Create Artist"><br>
+        </form>
+        <br>
+        <br>
+        <form class="" action="/assignArtist" method="post">
+            <select class="" name="artistId">
+                {%for artist in artists%}
+                    <option value="{{artist.id}}">{{artist.name}} {{artist.genre}}</option>
+                {%endfor%}
+            </select><br>
+            <select class="" name="songId">
+                {%for song in songs%}
+                    <option value="{{song.id}}">{{song.name}} {{song.popularity}}</option>
+                {%endfor%}
+            </select><br>
+            <input type="submit" name="" value="Submit"><br>
+
+        </select><br>
+        </form>
+
+        {%for x in artists_songs%}
+            <p>{{x.songName}} {{x.genre}} {{x.popularity}} {{x.artistName}}</p>
+
+        {%endfor%}
+    </body>
+</html>
